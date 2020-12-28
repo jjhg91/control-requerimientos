@@ -84,7 +84,7 @@ a.desc:after {
 }
 
 .error-summary {
-    color: #a94442;
+    /* color: #c7b2b2; */
     background: #fdf7f7;
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;

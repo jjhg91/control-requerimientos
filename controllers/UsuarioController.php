@@ -11,7 +11,10 @@ use yii\filters\VerbFilter;
 
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
-// use app\models\Cargo;
+
+use app\models\Cargo;
+use app\models\Departamento;
+use app\models\EstatusUsuario;
 
 /**
  * UsuarioController implements the CRUD actions for Usuario model.
@@ -75,6 +78,13 @@ class UsuarioController extends Controller
     {
         $model = new Usuario();
 
+        $cargo = Cargo::find()->all();
+        $departamento = Departamento::find()->all();
+        $estatusUsuario = EstatusUsuario::find()->all();
+        $listaCargo = ArrayHelper::map($cargo, 'id_cargo','descripcion');
+        $listaDepartamento = ArrayHelper::map($departamento, 'id_departamento','descripcion');
+        $listaEstatusUsuario = ArrayHelper::map($estatusUsuario, 'id_estatus_usuario','descripcion');
+
         if ($model->load(Yii::$app->request->post())) {
             
             $model->password = password_hash($_POST['Usuario']['password'], PASSWORD_ARGON2I);
@@ -90,7 +100,9 @@ class UsuarioController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            
+            'listaCargo' => $listaCargo,
+            'listaDepartamento' => $listaDepartamento,
+            'listaEstatusUsuario' => $listaEstatusUsuario
         ]);
     }
 
@@ -105,10 +117,13 @@ class UsuarioController extends Controller
     {
         $model = $this->findModel($id);
 
-        // $cargo = Cargo::find()->all();
-        $cargo = $model->cargo->find()->all();
+        $cargo = Cargo::find()->all();
+        $departamento = Departamento::find()->all();
+        $estatusUsuario = EstatusUsuario::find()->all();
         $listaCargo = ArrayHelper::map($cargo, 'id_cargo','descripcion');
-      
+        $listaDepartamento = ArrayHelper::map($departamento, 'id_departamento','descripcion');
+        $listaEstatusUsuario = ArrayHelper::map($estatusUsuario, 'id_estatus_usuario','descripcion');
+       
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->p00]);
@@ -116,7 +131,9 @@ class UsuarioController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'listaCargo' => $listaCargo
+            'listaCargo' => $listaCargo,
+            'listaDepartamento' => $listaDepartamento,
+            'listaEstatusUsuario' => $listaEstatusUsuario
         ]);
     }
 

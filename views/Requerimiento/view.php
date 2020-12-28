@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php 
     $model->id_frecuencia = $model->frecuencia->descripcion; 
     $model->id_tipo_requerimiento = $model->tipoRequerimiento->descripcion;
-    $model->nombres = 'Hola';
+    // $model = 
+    // $model->nombres = 'Hola';
     ?>
 
     <?= DetailView::widget([

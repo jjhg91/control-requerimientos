@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 
 use kartik\select2\Select2;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuario */
 /* @var $form yii\widgets\ActiveForm */
@@ -22,9 +23,24 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'apellidos')->textInput() ?>
 
-    <?= $form->field($model, 'id_departamento')->textInput() ?>
+    <?= 
+       $form->field($model, 'id_departamento')->dropdownList([
+            $listaDepartamento
+        ],
+        ['prompt'=>'SELECCIONAR DEPARTAMENTO']
+    );
+    ?>
 
-    <?= $form->field($model, 'id_cargo')->textInput() ?>
+
+    <?= 
+        $form->field($model, 'id_cargo')->dropdownList([
+            $listaCargo
+        ],
+        ['prompt'=>'SELECCIONAR CARGO']
+    );
+    ?>
+
+
 
     <?= $form->field($model, 'password')->passwordInput() ?>
 
@@ -36,22 +52,19 @@ use kartik\select2\Select2;
 
     
 
-    <!-- <?#= var_dump($listaCargo); ?> -->
-
-    <!-- <?#= $form->field($model->cargo, 'id_cargo')->widget(Select2::classname(), [
-        #'data' => $listaCargo,
-        #'options' => ['placeholder' => Yii::t('app', 'Selecciona Un Cargo ') . '...'],
-        #'pluginOptions' => [
-        #    'allowClear' => true,
-        #],
-    #])
-   ?> -->
+   
 
     
 
 
 
-    <?= $form->field($model, 'id_estatus_usuario')->textInput() ?>
+    <?= 
+        $form->field($model, 'id_estatus_usuario')->dropdownList([
+            $listaEstatusUsuario
+        ],
+        ['prompt'=>'SELECCIONAR ESTATUS']
+    );
+    ?>
 
     <!-- <?= $form->field($model, 'authKey')->textInput() ?> -->
 

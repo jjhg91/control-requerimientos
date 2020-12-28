@@ -14,13 +14,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fecha_solicitud')->textInput() ?>
 
-    <?= $form->field($model, 'id_tipo_requerimiento')->textInput() ?>
 
-    <?= $form->field($model, 'objetivo')->textInput() ?>
+    <?= 
+        $form->field($model, 'id_tipo_requerimiento')->dropdownList([
+            $listaTipoRequerimiento
+        ],
+        ['prompt'=>'SELECCIONAR TIPO DE REQUERIMIENTO...']
+    );
+    ?>
 
-    <?= $form->field($model, 'descripcion')->textInput() ?>
+    <?= $form->field($model, 'objetivo')->textarea(['rows' => '4']) ?>
 
-    <?= $form->field($model, 'datos')->textInput() ?>
+    <?= $form->field($model, 'descripcion')->textarea(['rows' => '8']) ?>
+
+    <?= $form->field($model, 'datos')->textarea(['rows' => '4']) ?>
 
     <?= $form->field($model, 'fecha_requerida')->textInput() ?>
 
@@ -28,7 +35,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'p00_solicitante')->textInput() ?>
 
-    <?= $form->field($model, 'id_frecuencia')->textInput() ?>
+    <?= 
+        $form->field($model, 'id_frecuencia')->dropdownList([
+            $listaFrecuencia
+        ],
+        ['prompt'=>'SELECCIONAR FRECUANCIA...']
+    );
+    ?>
 
     
 

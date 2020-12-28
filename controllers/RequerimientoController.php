@@ -9,6 +9,11 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\TipoRequerimiento;
+use app\models\Frecuencia;
+
+use yii\helpers\ArrayHelper;
+
 /**
  * RequerimientoController implements the CRUD actions for Requerimiento model.
  */
@@ -66,12 +71,19 @@ class RequerimientoController extends Controller
     {
         $model = new Requerimiento();
 
+        $tipoRequerimiento = TipoRequerimiento::find()->all();
+        $frecuencia = Frecuencia::find()->all();
+        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
+        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'listaTipoRequerimiento' => $listaTipoRequerimiento,
+            'listaFrecuencia' => $listaFrecuencia
         ]);
     }
 
@@ -86,12 +98,19 @@ class RequerimientoController extends Controller
     {
         $model = $this->findModel($id);
 
+        $tipoRequerimiento = TipoRequerimiento::find()->all();
+        $frecuencia = Frecuencia::find()->all();
+        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
+        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'listaTipoRequerimiento' => $listaTipoRequerimiento,
+            'listaFrecuencia' => $listaFrecuencia
         ]);
     }
 
