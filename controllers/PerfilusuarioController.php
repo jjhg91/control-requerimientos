@@ -3,21 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Requerimiento;
-use app\models\RequerimientoSearch;
+use app\models\PerfilUsuario;
+use app\models\PerfilUsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-use app\models\TipoRequerimiento;
-use app\models\Frecuencia;
-
-use yii\helpers\ArrayHelper;
-
 /**
- * RequerimientoController implements the CRUD actions for Requerimiento model.
+ * PerfilusuarioController implements the CRUD actions for PerfilUsuario model.
  */
-class RequerimientoController extends Controller
+class PerfilusuarioController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -35,12 +30,12 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Lists all Requerimiento models.
+     * Lists all PerfilUsuario models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RequerimientoSearch();
+        $searchModel = new PerfilUsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +45,7 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Displays a single Requerimiento model.
+     * Displays a single PerfilUsuario model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -63,32 +58,25 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Creates a new Requerimiento model.
+     * Creates a new PerfilUsuario model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Requerimiento();
-
-        $tipoRequerimiento = TipoRequerimiento::find()->all();
-        $frecuencia = Frecuencia::find()->all();
-        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
-        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+        $model = new PerfilUsuario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+            return $this->redirect(['view', 'id' => $model->id_perfil_usuario]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'listaTipoRequerimiento' => $listaTipoRequerimiento,
-            'listaFrecuencia' => $listaFrecuencia
         ]);
     }
 
     /**
-     * Updates an existing Requerimiento model.
+     * Updates an existing PerfilUsuario model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,24 +86,17 @@ class RequerimientoController extends Controller
     {
         $model = $this->findModel($id);
 
-        $tipoRequerimiento = TipoRequerimiento::find()->all();
-        $frecuencia = Frecuencia::find()->all();
-        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
-        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+            return $this->redirect(['view', 'id' => $model->id_perfil_usuario]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'listaTipoRequerimiento' => $listaTipoRequerimiento,
-            'listaFrecuencia' => $listaFrecuencia
         ]);
     }
 
     /**
-     * Deletes an existing Requerimiento model.
+     * Deletes an existing PerfilUsuario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -129,15 +110,15 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Finds the Requerimiento model based on its primary key value.
+     * Finds the PerfilUsuario model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Requerimiento the loaded model
+     * @return PerfilUsuario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Requerimiento::findOne($id)) !== null) {
+        if (($model = PerfilUsuario::findOne($id)) !== null) {
             return $model;
         }
 

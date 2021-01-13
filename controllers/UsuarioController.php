@@ -15,6 +15,8 @@ use yii\helpers\ArrayHelper;
 use app\models\Cargo;
 use app\models\Departamento;
 use app\models\EstatusUsuario;
+use app\models\PerfilUsuarioUsuario;
+use app\models\PerfilUsuario;
 
 /**
  * UsuarioController implements the CRUD actions for Usuario model.
@@ -41,12 +43,7 @@ class UsuarioController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        // $uss = new Usuario();
-        // $aa = $uss->find()->All(); 
-        // var_dump($aa);
-        // exit; 
-        
+    {    
         $searchModel = new UsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -63,9 +60,25 @@ class UsuarioController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
-    {
+    {  
+        $model = $this->findModel($id);
+        $cargo = $model->cargo->descripcion;
+        $departamento = $model->departamento->descripcion;
+        $estatus = $model->estatusUsuario->descripcion;
+
+        $listaPerfiles = PerfilUsuarioUsuario::findAll(['p00'=>$id, 'estatus_perfil' => true]);
+        $perfiles = '|    ';
+
+        foreach ($listaPerfiles as $pp) {
+            $perfiles = $perfiles . $pp->perfilUsuario->descripcion . '    |    ';
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            // 'model' => $this->findModel($id),
+            'model' => $model,
+            'cargo' => $cargo,
+            'departamento' => $departamento,
+            'estatus' => $estatus,
+            'perfiles' => $perfiles,
         ]);
     }
 
@@ -116,6 +129,7 @@ class UsuarioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model2 = 
 
         $cargo = Cargo::find()->all();
         $departamento = Departamento::find()->all();
@@ -125,12 +139,18 @@ class UsuarioController extends Controller
         $listaEstatusUsuario = ArrayHelper::map($estatusUsuario, 'id_estatus_usuario','descripcion');
        
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->p00]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->password = password_hash($_POST['Usuario']['password'], PASSWORD_ARGON2I);
+            
+            if ($model->save()){
+                return $this->redirect(['view', 'id' => $model->p00]);
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'model2' => $model2,
             'listaCargo' => $listaCargo,
             'listaDepartamento' => $listaDepartamento,
             'listaEstatusUsuario' => $listaEstatusUsuario

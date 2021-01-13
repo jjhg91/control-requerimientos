@@ -3,21 +3,19 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Requerimiento;
-use app\models\RequerimientoSearch;
+use app\models\PerfilUsuarioUsuario;
+use app\models\PerfilUsuarioUsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-use app\models\TipoRequerimiento;
-use app\models\Frecuencia;
-
+use app\models\PerfilUsuario;
 use yii\helpers\ArrayHelper;
 
 /**
- * RequerimientoController implements the CRUD actions for Requerimiento model.
+ * PerfilusuariousuarioController implements the CRUD actions for PerfilUsuarioUsuario model.
  */
-class RequerimientoController extends Controller
+class PerfilusuariousuarioController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -35,12 +33,12 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Lists all Requerimiento models.
+     * Lists all PerfilUsuarioUsuario models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RequerimientoSearch();
+        $searchModel = new PerfilUsuarioUsuarioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -50,7 +48,7 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Displays a single Requerimiento model.
+     * Displays a single PerfilUsuarioUsuario model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -63,32 +61,71 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Creates a new Requerimiento model.
+     * Creates a new PerfilUsuarioUsuario model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Requerimiento();
+        $model = new PerfilUsuarioUsuario();
 
-        $tipoRequerimiento = TipoRequerimiento::find()->all();
-        $frecuencia = Frecuencia::find()->all();
-        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
-        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+        $perfil = PerfilUsuario::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+$listaPerfiles = ArrayHelper::map($perfil, 'id_perfil_usuario','descripcion');
+
+if ($model->load(Yii::$app->request->post()) ) {
+    
+    var_dump($model->id_perfil_usuario);
+    echo "<br/>";
+    echo "<br/>";
+    echo "<br/>";
+    $perfiles = $model->id_perfil_usuario;
+  
+    // var_dump($listaPerfiles);
+    // exit;
+
+
+    foreach ($perfil as $e) {
+        $model2 = new PerfilUsuarioUsuario();
+        $model2->p00 = $model->p00; 
+        $model2->id_perfil_usuario = $e->id_perfil_usuario;
+        $model2->estatus_perfil = false;
+        
+        foreach ($perfiles as $perfil) {
+            if( $perfil == $e->id_perfil_usuario ){        
+                $model2->estatus_perfil = true;
+                
+            }
         }
 
-        return $this->render('create', [
-            'model' => $model,
-            'listaTipoRequerimiento' => $listaTipoRequerimiento,
-            'listaFrecuencia' => $listaFrecuencia
-        ]);
+        $model2->save();
+        
+    }
+    return $this->redirect(['index']);
+
+    foreach ($perfiles as $perfil) {
+        $model2 = new PerfilUsuarioUsuario();
+        $model2->p00 = $model->p00;
+        $model2->id_perfil_usuario = (int)$perfil;
+        // $model2->save();
+    }
+
+
+    return $this->redirect(['view', 'id' => $model->id_perfil_usuario__usuario]);
+    // exit;
+    // if ($model->save()) {
+    //     return $this->redirect(['view', 'id' => $model->id_perfil_usuario__usuario]);
+    // }
+}
+
+return $this->render('create', [
+    'model' => $model,
+    'listaPerfiles' => $listaPerfiles,
+]);
     }
 
     /**
-     * Updates an existing Requerimiento model.
+     * Updates an existing PerfilUsuarioUsuario model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,24 +135,17 @@ class RequerimientoController extends Controller
     {
         $model = $this->findModel($id);
 
-        $tipoRequerimiento = TipoRequerimiento::find()->all();
-        $frecuencia = Frecuencia::find()->all();
-        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
-        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+            return $this->redirect(['view', 'id' => $model->id_perfil_usuario__usuario]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'listaTipoRequerimiento' => $listaTipoRequerimiento,
-            'listaFrecuencia' => $listaFrecuencia
         ]);
     }
 
     /**
-     * Deletes an existing Requerimiento model.
+     * Deletes an existing PerfilUsuarioUsuario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -129,15 +159,15 @@ class RequerimientoController extends Controller
     }
 
     /**
-     * Finds the Requerimiento model based on its primary key value.
+     * Finds the PerfilUsuarioUsuario model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Requerimiento the loaded model
+     * @return PerfilUsuarioUsuario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Requerimiento::findOne($id)) !== null) {
+        if (($model = PerfilUsuarioUsuario::findOne($id)) !== null) {
             return $model;
         }
 

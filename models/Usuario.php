@@ -106,9 +106,20 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getPerfilUsuarioUsuarios()
     {
-        return $this->hasMany(PerfilUsuarioUsuario::className(), ['p00' => 'p00']);
+        return $this->hasMany(PerfilUsuarioUsuario::className(), ['p00','p00']);
     }
 
+    /**
+     * Gets query for [[PerfilUsuarios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPerfilUsuario()
+    {
+        return $this->hasMany(PerfilUsuario::className(), ['id_perfil_usuario' =>'id_perfil_usuario'])->viaTable(PerfilUsuarioUsuario::tableName(), ['id_perfil_usuario' => 'id_perfil_usuario']);
+    }
+
+    
     /**
      * Gets query for [[Requerimientos]].
      *

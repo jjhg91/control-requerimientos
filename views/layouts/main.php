@@ -50,6 +50,8 @@ AppAsset::register($this);
             ['label' => 'Estatus de Requerimiento', 'url' => ['/estatusrequerimiento/index']],
             ['label' => 'Frecuencia', 'url' => ['/frecuencia/index']],
             ['label' => 'Requerimiento', 'url' => ['/requerimiento/index']],
+            ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
+            ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
 
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

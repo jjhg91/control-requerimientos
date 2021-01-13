@@ -58,13 +58,13 @@ use kartik\select2\Select2;
 
 
 
-    <?= 
-        $form->field($model, 'id_estatus_usuario')->dropdownList([
+    <?= $form->field($model, 'id_estatus_usuario')->dropdownList([
             $listaEstatusUsuario
         ],
         ['prompt'=>'SELECCIONAR ESTATUS']
-    );
-    ?>
+    ); ?>
+
+
 
     <!-- <?= $form->field($model, 'authKey')->textInput() ?> -->
 

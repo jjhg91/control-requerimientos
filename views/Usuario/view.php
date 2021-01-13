@@ -32,13 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'p00',
             'nombres',
             'apellidos',
-            'password',
+            ['label' => 'Usuario', 'value' => $model->username],
+            ['label' => 'Password', 'value' => '* * * * * * * * * * * * * * * * * * '],
             'correo',
             'telefono',
-            'id_departamento',
-            'id_cargo',
-            'id_estatus_usuario',
-            'username'
+            ['label' => 'Departamento', 'value' => $departamento],
+            ['label' => 'Cargo', 'value' => $cargo],
+            ['label' => 'Estatus Usuario', 'value' => $estatus],
+            ['label' => 'Perfiles del Usuario','value' =>  $perfiles ]
         ],
     ]) ?>
 
