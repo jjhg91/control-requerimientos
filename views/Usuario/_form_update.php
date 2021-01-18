@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 use kartik\select2\Select2;
-
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuario */
@@ -31,7 +31,6 @@ use kartik\select2\Select2;
     );
     ?>
 
-
     <?= 
         $form->field($model, 'id_cargo')->dropdownList([
             $listaCargo
@@ -40,23 +39,11 @@ use kartik\select2\Select2;
     );
     ?>
 
-
-
     <?= $form->field($model, 'password')->passwordInput() ?>
 
     <?= $form->field($model, 'correo')->textInput() ?>
 
     <?= $form->field($model, 'telefono')->textInput() ?>
-
-    
-
-    
-
-   
-
-    
-
-
 
     <?= $form->field($model, 'id_estatus_usuario')->dropdownList([
             $listaEstatusUsuario
@@ -64,7 +51,21 @@ use kartik\select2\Select2;
         ['prompt'=>'SELECCIONAR ESTATUS']
     ); ?>
 
-
+    <!-- <?#= $form->field($modelPerfiles, 'id_perfil_usuario')->checkboxList($listaPerfiles) ?> -->
+    
+    <?php 
+        foreach ($listaPerfiles as $perfil) {
+            foreach ($perfilActivo as $activo) {
+                if ($perfil->id_perfil_usuario === $activo->id_perfil_usuario ){
+                    if ($activo->estatus_perfil) {
+                        echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['checked' => 'checked', 'label' => $perfil->descripcion , 'value' => $activo->id_perfil_usuario__usuario] );
+                    } else {
+                        echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['label' => $perfil->descripcion, 'value' => $activo->id_perfil_usuario__usuario] );
+                    }   
+                }
+            } 
+        }
+    ?>
 
     <!-- <?= $form->field($model, 'authKey')->textInput() ?> -->
 

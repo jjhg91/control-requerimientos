@@ -98,15 +98,34 @@ class UsuarioController extends Controller
         $listaDepartamento = ArrayHelper::map($departamento, 'id_departamento','descripcion');
         $listaEstatusUsuario = ArrayHelper::map($estatusUsuario, 'id_estatus_usuario','descripcion');
 
-        if ($model->load(Yii::$app->request->post())) {
+        // PERFILES
+        $modelPerfiles = new PerfilUsuarioUsuario();
+        $perfil = PerfilUsuario::find()->all();
+        $listaPerfiles = ArrayHelper::map($perfil, 'id_perfil_usuario','descripcion');
+        // PERFILES
+
+        if ($model->load(Yii::$app->request->post()) && $modelPerfiles->load(Yii::$app->request->post())) {
             
             $model->password = password_hash($_POST['Usuario']['password'], PASSWORD_ARGON2I);
             $model->authKey = md5(random_bytes(5));
             $model->accessToken = password_hash(random_bytes(10), PASSWORD_DEFAULT);
 
-            
-            
             if ($model->save()) {
+                /// PERFILES
+                $perfiles = $modelPerfiles->id_perfil_usuario;
+                foreach ($perfil as $e) {
+                    $model2 = new PerfilUsuarioUsuario();
+                    $model2->p00 = $model->p00; 
+                    $model2->id_perfil_usuario = $e->id_perfil_usuario;
+                    $model2->estatus_perfil = false;
+                    foreach ($perfiles as $perfil) {
+                        if( $perfil == $e->id_perfil_usuario ){        
+                            $model2->estatus_perfil = true;  
+                        }
+                    }
+                    $model2->save();
+                }
+                //// PERFILES
                 return $this->redirect(['view', 'id' => $model->p00]);
             }
         }
@@ -115,7 +134,9 @@ class UsuarioController extends Controller
             'model' => $model,
             'listaCargo' => $listaCargo,
             'listaDepartamento' => $listaDepartamento,
-            'listaEstatusUsuario' => $listaEstatusUsuario
+            'listaEstatusUsuario' => $listaEstatusUsuario,
+            'modelPerfiles' => $modelPerfiles,
+            'listaPerfiles' => $perfil,
         ]);
     }
 
@@ -129,7 +150,6 @@ class UsuarioController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model2 = 
 
         $cargo = Cargo::find()->all();
         $departamento = Departamento::find()->all();
@@ -138,22 +158,46 @@ class UsuarioController extends Controller
         $listaDepartamento = ArrayHelper::map($departamento, 'id_departamento','descripcion');
         $listaEstatusUsuario = ArrayHelper::map($estatusUsuario, 'id_estatus_usuario','descripcion');
        
+        // PERFILES
+        $modelPerfiles = new PerfilUsuarioUsuario;
+        $perfilActivo = $modelPerfiles->find()->where("p00 = :id",['id' => $id])->all();
+        $perfil = PerfilUsuario::find()->all();
+        $listaPerfiles = ArrayHelper::map($perfil, 'id_perfil_usuario','descripcion');
+        
+        // PERFILES
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $modelPerfiles->load(Yii::$app->request->post())) {
+            if ($this->findModel($id)->password != $model->password){
+                $model->password = password_hash($_POST['Usuario']['password'], PASSWORD_ARGON2I);
+            }
 
-            $model->password = password_hash($_POST['Usuario']['password'], PASSWORD_ARGON2I);
-            
             if ($model->save()){
+                /// PERFILES
+                    $perfiles = $modelPerfiles->id_perfil_usuario;
+                   foreach ($perfilActivo as $e) {
+                        $model2 = PerfilUsuarioUsuario::findOne($e->id_perfil_usuario__usuario);
+                        $model2->estatus_perfil = false;
+                        foreach ($perfiles as $perfil) {
+                            if( $perfil == $e->id_perfil_usuario__usuario ){        
+                                $model2->estatus_perfil = true; 
+                            }
+                        }
+                        // echo $model2->id_perfil_usuario . " - " . $model2->estatus_perfil . "<br/>";
+                       $model2->save();
+                   }
+                //// PERFILES
                 return $this->redirect(['view', 'id' => $model->p00]);
             }
         }
 
         return $this->render('update', [
             'model' => $model,
-            'model2' => $model2,
             'listaCargo' => $listaCargo,
             'listaDepartamento' => $listaDepartamento,
-            'listaEstatusUsuario' => $listaEstatusUsuario
+            'listaEstatusUsuario' => $listaEstatusUsuario,
+            'modelPerfiles' => $modelPerfiles,
+            'listaPerfiles' => $perfil,
+            'perfilActivo' => $perfilActivo,
         ]);
     }
 
