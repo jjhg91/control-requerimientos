@@ -1,0 +1,311 @@
+{
+    "sites":[
+        {
+            "site" : [""],
+            "access" : "public",
+            "role" : [""] 
+        },
+        {
+            "site" : "index.php",
+            "access" : "public",
+            "role" : [""] 
+        },
+        {
+            "site" : "site%2Findex",
+            "access" : "public",
+            "role" : [""] 
+        },
+        {
+            "site" : "site%2Flogin",
+            "access" : "public",
+            "role" : [""] 
+        },
+        {
+            "site" : "usuario%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "usuario%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "usuario%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "usuario%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "usuario%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "cargo%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "cargo%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "cargo%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "cargo%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "cargo%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "departamento%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "departamento%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "departamento%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "departamento%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "departamento%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "arearesponsable%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "arearesponsable%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "arearesponsable%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "arearesponsable%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "arearesponsable%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatususuario%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatususuario%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatususuario%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatususuario%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatususuario%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "tiporequerimiento%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "tiporequerimiento%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "tiporequerimiento%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "tiporequerimiento%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "tiporequerimiento%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimiento%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimiento%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimiento%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimiento%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimiento%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "frecuencia%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "frecuencia%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "frecuencia%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "frecuencia%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "frecuencia%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "requerimiento%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "requerimiento%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "requerimiento%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "requerimiento%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "requerimiento%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuario%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuario%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuario%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuario%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuario%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuariousuario%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuariousuario%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuariousuario%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuariousuario%2Fupdate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "perfilusuariousuario%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        }
+
+    ],
+    "default-sites" : [
+        {
+            "site" : "deshboard",
+            "role" : ["8",""]
+        },
+        {
+            "site" : "deshboard",
+            "role" : ["8",""]
+        }
+
+    ]
+}

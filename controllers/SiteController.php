@@ -10,6 +10,12 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use app\controllers\AccessController;
+use  yii\web\Session;
+
+
+
+
 class SiteController extends Controller
 {
     /**
@@ -61,6 +67,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $access = new AccessController();
+        $access->accessT();
+
+
         return $this->render('index');
     }
 
