@@ -23,6 +23,9 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
+        // $access = new AccessController();
+        // $access->accessT();
+        
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -67,8 +70,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $access = new AccessController();
-        $access->accessT();
+        
 
 
         return $this->render('index');

@@ -1,10 +1,9 @@
 {
     "sites":[
-        {
-            // INICIO 
-            "site" : [""],
+        { 
+            "site" : "",
             "access" : "public",
-            "role" : [""] 
+            "role" : [""]
         },
         {
             "site" : "index.php",
@@ -20,6 +19,11 @@
             "site" : "site%2Flogin",
             "access" : "public",
             "role" : [""] 
+        },
+        {
+            "site" : "usuario",
+            "access" : "private",
+            "role" : ["8",""] 
         },
         {
             "site" : "usuario%2Findex",
@@ -224,17 +228,17 @@
         {
             "site" : "requerimiento%2Findex",
             "access" : "private",
-            "role" : ["8",""] 
+            "role" : ["8","1"] 
         },
         {
             "site" : "requerimiento%2Fcreate",
             "access" : "private",
-            "role" : ["8",""] 
+            "role" : ["8","1"] 
         },
         {
             "site" : "requerimiento%2Fview",
             "access" : "private",
-            "role" : ["8",""] 
+            "role" : ["8","1"] 
         },
         {
             "site" : "requerimiento%2Fupdate",
@@ -300,11 +304,11 @@
     ],
     "default-sites" : [
         {
-            "site" : "deshboard",
-            "role" : ["8",""]
+            "site" : "site%2Flogin",
+            "role" : []
         },
         {
-            "site" : "deshboard",
+            "site" : "",
             "role" : ["8",""]
         }
 

@@ -18,6 +18,10 @@ use app\models\EstatusUsuario;
 use app\models\PerfilUsuarioUsuario;
 use app\models\PerfilUsuario;
 
+
+use app\controllers\AccessController;
+
+
 /**
  * UsuarioController implements the CRUD actions for Usuario model.
  */
@@ -28,6 +32,9 @@ class UsuarioController extends Controller
      */
     public function behaviors()
     {
+        // $access = new AccessController();
+        // $access->accessT();
+        
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),

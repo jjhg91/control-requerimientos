@@ -25,9 +25,6 @@ class AccessController
 
         // exit;
        $this->validateSession();
-
-
-        // $this->validateSession();
     }
 
     public function getJSONFileConfig()
@@ -48,11 +45,15 @@ class AccessController
             $role = $this->getUserSessionData();
 
             if ($this->isPublic()) {
+
                 $this->redirectDefaultSiteByRole($role);
+                echo 'PUBLICO';
                 
             }else {
-                exit;
+                $this->isAuthorized($role);
+                echo'PRIVADO';
             }
+            exit;
             // $id = $session->identity->p00;
             // $modelPerfiles = new PerfilUsuarioUsuario();
             // $perfilActivo = $modelPerfiles->find()->where("p00 = :id",['id' => $id])->all();
@@ -115,17 +116,44 @@ class AccessController
         return $url;
     }
 
-    public function redirectDefaultSiteByRole($role)
+    // REVISAR SOLO FALTA ESTO!!!
+    public function redirectDefaultSiteByRole($roles)
     {
         $url = '';
         foreach ($this->sites as $site) {
-            var_dump($role);
-            if ( $site['role'] === $role ){
-                $url = "/basic/web/index.php?r=".$site['site'];
-            }else{
-                exit;
+            foreach ($site['role'] as $siteRole) {
+                foreach ($roles as $role) {
+                    if ( $siteRole == $role->id_perfil_usuario && $role->estatus_perfil == true ){
+                        $url = "/basic/web/index.php?r=".$site['site'];
+                        break;
+                    }
+                }
             }
         }
+        echo "esta es la url: $url";
+        exit;
+        // header("location: $url");
+    }
+    
+    public function isAuthorized($roles)
+    {
+        $currentURL = $this->getCurrentPage();
+
+        foreach ($this->sites as $site) {
+            if ( $site['site'] == $currentURL ){
+                foreach ($site['role'] as $siteRole) {
+                    foreach ($roles as $role) {
+                        
+                        if($siteRole == $role->id_perfil_usuario && $role->estatus_perfil === true){
+                            return true;
+                        }
+                        
+                    }
+                }
+            
+            }
+        }
+       return false; 
     }
     
 }
