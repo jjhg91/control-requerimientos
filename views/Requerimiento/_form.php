@@ -12,7 +12,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_solicitud')->textInput() ?>
+    <?php 
+        $fecha = date('d-m-Y H:i:s');
+        $model->fecha_solicitud = $fecha;
+    ?>
+
+    <!-- <?#= $form->field($model, 'fecha_solicitud')->textInput() ?> -->
 
 
     <?= 
@@ -29,7 +34,22 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'datos')->textarea(['rows' => '4']) ?>
 
-    <?= $form->field($model, 'fecha_requerida')->textInput() ?>
+    <!-- <?#= $form->field($model, 'fecha_requerida')->textInput() ?> -->
+
+<?= 
+DatePicker::widget([
+
+    'model' => $model,
+
+    'attribute' => 'fecha_requerida',
+
+    'language' => 'en',
+
+    'dateFormat' => 'yyyy-MM-dd',
+
+]);
+?>
+
 
     <!-- <?= $form->field($model, 'fecha_registro')->textInput() ?> -->
 

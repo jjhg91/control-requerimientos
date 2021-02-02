@@ -45,22 +45,34 @@ class AccessController
             $role = $this->getUserSessionData();
 
             if ($this->isPublic()) {
-
+                // ES UNA PAGINA PUBLICA
                 $this->redirectDefaultSiteByRole($role);
                 echo 'PUBLICO';
-                
+
             }else {
-                $this->isAuthorized($role);
-                echo'PRIVADO';
+                // ES UNA PAGINA PRIVADA
+                if ($this->isAuthorized($role)){
+                    // PERMITIDO
+                }else {
+                    // NO TIENE PERMISOS
+                    $this->redirectDefaultSiteByRole($role);
+                }
             }
-            exit;
+            // exit;
             // $id = $session->identity->p00;
             // $modelPerfiles = new PerfilUsuarioUsuario();
             // $perfilActivo = $modelPerfiles->find()->where("p00 = :id",['id' => $id])->all();
 
             // var_dump($perfilActivo);
         }else {
-            echo 'hh';
+            // NO EXISTE SESION
+            if ($this->isPublic()) {
+                // NO PASA NADA 
+            }else {
+      
+                header('Location: /basic/web/index.php?r=site%2Flogin');
+                exit;
+            }
         }
     }
 
@@ -130,9 +142,10 @@ class AccessController
                 }
             }
         }
-        echo "esta es la url: $url";
-        exit;
+        // echo "esta es la url: $url";
+        // exit;
         // header("location: $url");
+        // exit;
     }
     
     public function isAuthorized($roles)
@@ -155,5 +168,7 @@ class AccessController
         }
        return false; 
     }
+
+
     
 }

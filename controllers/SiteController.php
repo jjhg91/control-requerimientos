@@ -23,8 +23,8 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        // $access = new AccessController();
-        // $access->accessT();
+        $access = new AccessController();
+        $access->accessT();
         
         return [
             'access' => [

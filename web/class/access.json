@@ -2,17 +2,17 @@
     "sites":[
         { 
             "site" : "",
-            "access" : "public",
+            "access" : "private",
             "role" : [""]
         },
         {
             "site" : "index.php",
-            "access" : "public",
+            "access" : "private",
             "role" : [""] 
         },
         {
             "site" : "site%2Findex",
-            "access" : "public",
+            "access" : "private",
             "role" : [""] 
         },
         {
@@ -304,12 +304,8 @@
     ],
     "default-sites" : [
         {
-            "site" : "site%2Flogin",
-            "role" : []
-        },
-        {
-            "site" : "",
-            "role" : ["8",""]
+            "public" : "site%2Flogin",
+            "private" : ""
         }
 
     ]
