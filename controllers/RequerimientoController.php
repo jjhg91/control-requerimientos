@@ -77,6 +77,7 @@ class RequerimientoController extends Controller
         $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+ 
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }
 
@@ -113,6 +114,8 @@ class RequerimientoController extends Controller
             'listaFrecuencia' => $listaFrecuencia
         ]);
     }
+
+    
 
     /**
      * Deletes an existing Requerimiento model.

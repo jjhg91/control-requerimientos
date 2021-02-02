@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
         $model->fecha_solicitud = $fecha;
     ?>
 
-    <!-- <?#= $form->field($model, 'fecha_solicitud')->textInput() ?> -->
+    <?= $form->field($model, 'fecha_solicitud')->hiddenInput()->label(false) ?>
 
 
     <?= 
@@ -36,22 +36,25 @@ use yii\widgets\ActiveForm;
 
     <!-- <?#= $form->field($model, 'fecha_requerida')->textInput() ?> -->
 
-<?= 
-DatePicker::widget([
-
-    'model' => $model,
-
-    'attribute' => 'fecha_requerida',
-
-    'language' => 'en',
-
-    'dateFormat' => 'yyyy-MM-dd',
-
-]);
-?>
+    
 
 
-    <!-- <?= $form->field($model, 'fecha_registro')->textInput() ?> -->
+    <div class="form-group field-requerimiento-fecha_requerida required">
+        <label class="control-label" for="requerimiento-fecha_requerida">FECHA REQUERIDA</label>
+        <input type="date" id="requerimiento-fecha_requerida" class="form-control" name="Requerimiento[fecha_requerida]" aria-required="true">
+        <input type="time" id="requerimiento-fecha_requerida-time" class="form-control" name="Requerimiento[fecha_requerida-time]" aria-required="true">
+        <div class="help-block"></div>
+    </div>
+
+
+
+
+
+    <?php 
+        $fecha = date('d-m-Y H:i:s');
+        $model->fecha_registro = $fecha;
+    ?>
+    <?= $form->field($model, 'fecha_registro')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'p00_solicitante')->textInput() ?>
 

@@ -36,8 +36,30 @@ $this->params['breadcrumbs'][] = $this->title;
             //'p00_solicitante',
             //'id_frecuencia',
             //'id_tipo_requerimiento',
+            [
+                'label' => 'HOLA',
+                'content' => function($model,$key,$index,$column){
+                    $aa = '
+                        <a 
+                        href="/basic/web/index.php?r=requerimiento%2Fupdate&amp;id=10" 
+                        title="Update" 
+                        aria-label="Update" 
+                        data-pjax="0">
+                    
+                            <span 
+                                class="glyphicon 
+                                glyphicon-pencil">
+                            </span>
+                        </a>';
 
-            ['class' => 'yii\grid\ActionColumn'],
+                    return $aa;
+                }
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => ('{update}')
+                
+            ],
         ],
     ]); ?>
 
