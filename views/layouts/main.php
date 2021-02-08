@@ -35,6 +35,14 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
+    function algo($label, $url)
+    {
+        if(  Yii::$app->user->isGuest ){
+            return ['label' => $label, 'url' => [$url]];
+
+        }
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
        
@@ -52,6 +60,7 @@ AppAsset::register($this);
             ['label' => 'Requerimiento', 'url' => ['/requerimiento/index']],
             ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
             ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
+            algo('Perfil Usuario Usuario','/perfilusuariousuario/index'),
 
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
@@ -68,6 +77,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
+
     ?>
 
     <div class="container">
