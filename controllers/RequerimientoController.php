@@ -115,6 +115,68 @@ class RequerimientoController extends Controller
         ]);
     }
 
+
+    public function actionEstatus($id)
+    {
+        $model = $this->findModel($id);
+
+        $tipoRequerimiento = TipoRequerimiento::find()->all();
+        $frecuencia = Frecuencia::find()->all();
+        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
+        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+        }
+
+        return $this->render('estatus', [
+            'model' => $model,
+            'listaTipoRequerimiento' => $listaTipoRequerimiento,
+            'listaFrecuencia' => $listaFrecuencia
+        ]);
+    }
+
+    public function actionArea($id)
+    {
+        $model = $this->findModel($id);
+
+        $tipoRequerimiento = TipoRequerimiento::find()->all();
+        $frecuencia = Frecuencia::find()->all();
+        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
+        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+        }
+
+        return $this->render('area', [
+            'model' => $model,
+            'listaTipoRequerimiento' => $listaTipoRequerimiento,
+            'listaFrecuencia' => $listaFrecuencia
+        ]);
+    }
+
+
+    public function actionAsignar($id)
+    {
+        $model = $this->findModel($id);
+
+        $tipoRequerimiento = TipoRequerimiento::find()->all();
+        $frecuencia = Frecuencia::find()->all();
+        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
+        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id_requerimiento]);
+        }
+
+        return $this->render('asignar', [
+            'model' => $model,
+            'listaTipoRequerimiento' => $listaTipoRequerimiento,
+            'listaFrecuencia' => $listaFrecuencia
+        ]);
+    }
+
     
 
     /**
