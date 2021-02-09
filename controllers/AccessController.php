@@ -38,24 +38,30 @@ class AccessController
     public function validateSession()
     {
         $session =  Yii::$app->user;
-
         // if (!$session->isGuest){
+            
         if ($this->existsSession($session)){
+            
             // $role = $this->existsSession($session);
             $role = $this->getUserSessionData();
 
             if ($this->isPublic()) {
                 // ES UNA PAGINA PUBLICA
-                $this->redirectDefaultSiteByRole($role);
-                echo 'PUBLICO';
-
+                // $this->redirectDefaultSiteByRole($role);
+                header('Location: /basic/web/');
+                exit;
+                
             }else {
                 // ES UNA PAGINA PRIVADA
+                
                 if ($this->isAuthorized($role)){
                     // PERMITIDO
                 }else {
                     // NO TIENE PERMISOS
-                    $this->redirectDefaultSiteByRole($role);
+                    
+                    // $this->redirectDefaultSiteByRole($role);
+                    header('Location: /basic/web/');
+                    exit;
                 }
             }
             // exit;
@@ -136,6 +142,8 @@ class AccessController
             foreach ($site['role'] as $siteRole) {
                 foreach ($roles as $role) {
                     if ( $siteRole == $role->id_perfil_usuario && $role->estatus_perfil == true ){
+                        echo $site['site'] . " - " . $siteRole;
+                        exit;
                         $url = "/basic/web/index.php?r=".$site['site'];
                         break;
                     }
@@ -153,10 +161,12 @@ class AccessController
         $currentURL = $this->getCurrentPage();
 
         foreach ($this->sites as $site) {
+            // var_dump($this->sites);
+            // // echo $currentURL;
+            // exit;
             if ( $site['site'] == $currentURL ){
                 foreach ($site['role'] as $siteRole) {
                     foreach ($roles as $role) {
-                        
                         if($siteRole == $role->id_perfil_usuario && $role->estatus_perfil === true){
                             return true;
                         }

@@ -38,28 +38,47 @@ AppAsset::register($this);
 
     function algo($label, $url)
     {
-        if(  Yii::$app->user->isGuest ){
+        if(  !Yii::$app->user->isGuest ){
+            
+            // if (condition) {
+            // }
+
             return ['label' => $label, 'url' => [$url]];
+            #return true; 
 
         }
+        return '';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
        
         'items' => [
 
-            ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'Usuario', 'url' => ['/usuario/index']],
-            ['label' => 'Cargo', 'url' => ['/cargo/index']],
-            ['label' => 'Departamento', 'url' => ['/departamento/index']],
-            ['label' => 'Area Responsable', 'url' => ['/arearesponsable/index']],
-            ['label' => 'Estatus Usuario', 'url' => ['/estatususuario/index']],
-            ['label' => 'Tipo de Requerimiento', 'url' => ['/tiporequerimiento/index']],
-            ['label' => 'Estatus de Requerimiento', 'url' => ['/estatusrequerimiento/index']],
-            ['label' => 'Frecuencia', 'url' => ['/frecuencia/index']],
-            ['label' => 'Requerimiento', 'url' => ['/requerimiento/index']],
-            ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
-            ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
+            // ['label' => 'Inicio', 'url' => ['/site/index']],
+            // ['label' => 'Usuario', 'url' => ['/usuario/index']],
+            // ['label' => 'Cargo', 'url' => ['/cargo/index']],
+            // ['label' => 'Departamento', 'url' => ['/departamento/index']],
+            // ['label' => 'Area Responsable', 'url' => ['/arearesponsable/index']],
+            // ['label' => 'Estatus Usuario', 'url' => ['/estatususuario/index']],
+            // ['label' => 'Tipo de Requerimiento', 'url' => ['/tiporequerimiento/index']],
+            // ['label' => 'Estatus de Requerimiento', 'url' => ['/estatusrequerimiento/index']],
+            // ['label' => 'Frecuencia', 'url' => ['/frecuencia/index']],
+            // ['label' => 'Requerimiento', 'url' => ['/requerimiento/index']],
+            // ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
+            // ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
+            
+            
+            algo('Inicio', '/site/index'),
+            algo('Usuario', '/usuario/index'),
+            algo('Cargo', '/cargo/index'),
+            algo('Departamento', '/departamento/index'),
+            algo('Area Responsable', '/arearesponsable/index'),
+            algo('Estatus Usuario', '/estatususuario/index'),
+            algo('Tipo de Requerimiento', '/tiporequerimiento/index'),
+            algo('Estatus de Requerimiento', '/estatusrequerimiento/index'),
+            algo('Frecuencia', '/frecuencia/index'),
+            algo('Requerimiento', '/requerimiento/index'),
+            algo('Perfil Usuario', '/perfilusuario/index'),
             algo('Perfil Usuario Usuario','/perfilusuariousuario/index'),
 
             Yii::$app->user->isGuest ? (

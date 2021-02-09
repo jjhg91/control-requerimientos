@@ -3,22 +3,27 @@
         { 
             "site" : "",
             "access" : "private",
-            "role" : [""]
+            "role" : ["1","2","3","4","5","6","7","8"]
         },
         {
             "site" : "index.php",
             "access" : "private",
-            "role" : [""] 
+            "role" : ["1","2","3","4","5","6","7","8"] 
         },
         {
             "site" : "site%2Findex",
             "access" : "private",
-            "role" : [""] 
+            "role" : ["1","2","3","4","5","6","7","8"] 
         },
         {
             "site" : "site%2Flogin",
             "access" : "public",
-            "role" : [""] 
+            "role" : ["1","2","3","4","5","6","7","8"] 
+        },
+        {
+            "site" : "site%2Flogout",
+            "access" : "private",
+            "role" : ["1","2","3","4","5","6","7","8"] 
         },
         {
             "site" : "usuario",
@@ -36,7 +41,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "usuario%2Fview",
+            "site" : "usuario%2Fview&id",
             "access" : "private",
             "role" : ["8",""] 
         },

@@ -17,6 +17,9 @@ class PerfilUsuario extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $estatus = false;
+    public $id_perfil_usuario__usuario;
+
     public static function tableName()
     {
         return 'perfil_usuario';

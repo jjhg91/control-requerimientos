@@ -184,6 +184,7 @@ class UsuarioController extends Controller
                    foreach ($perfilActivo as $e) {
                         $model2 = PerfilUsuarioUsuario::findOne($e->id_perfil_usuario__usuario);
                         $model2->estatus_perfil = false;
+                        
                         foreach ($perfiles as $perfil) {
                             if( $perfil == $e->id_perfil_usuario__usuario ){        
                                 $model2->estatus_perfil = true; 

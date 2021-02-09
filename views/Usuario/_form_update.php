@@ -58,12 +58,24 @@ use yii\helpers\ArrayHelper;
             foreach ($perfilActivo as $activo) {
                 if ($perfil->id_perfil_usuario === $activo->id_perfil_usuario ){
                     if ($activo->estatus_perfil) {
-                        echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['checked' => 'checked', 'label' => $perfil->descripcion , 'value' => $activo->id_perfil_usuario__usuario] );
-                    } else {
-                        echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['label' => $perfil->descripcion, 'value' => $activo->id_perfil_usuario__usuario] );
-                    }   
+                        $perfil->estatus = true;
+                        $perfil->id_perfil_usuario__usuario = $activo->id_perfil_usuario__usuario;
+                        // echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['checked' => 'checked', 'label' => $perfil->descripcion , 'value' => $activo->id_perfil_usuario__usuario] );
+                        // } else {
+                            // echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['label' => $perfil->descripcion, 'value' => $activo->id_perfil_usuario__usuario] );
+                        }   
+                    }
+                } 
+            
+                if ($perfil->estatus){
+                    echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['checked' => 'checked', 'label' => $perfil->descripcion , 'value' => $perfil->id_perfil_usuario__usuario] );
+                    
+                }else{
+                    echo $form->field($modelPerfiles, 'id_perfil_usuario[]')->checkbox(['label' => $perfil->descripcion , 'value' => $perfil->id_perfil_usuario__usuario] );
+
                 }
-            } 
+            // var_dump($perfil);    
+            // exit;
         }
     ?>
 
