@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'Proyecto Movilnet',
+    'name' => '<img src="logo.png" style="height:32px; margin-bottom:52px;" />',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [

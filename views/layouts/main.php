@@ -67,7 +67,6 @@ AppAsset::register($this);
             // ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
             // ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
             
-            
             algo('Inicio', '/site/index'),
             algo('Usuario', '/usuario/index'),
             algo('Cargo', '/cargo/index'),
@@ -80,6 +79,7 @@ AppAsset::register($this);
             algo('Requerimiento', '/requerimiento/index'),
             algo('Perfil Usuario', '/perfilusuario/index'),
             algo('Perfil Usuario Usuario','/perfilusuariousuario/index'),
+            
 
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
@@ -112,6 +112,17 @@ AppAsset::register($this);
     <div class="container">
 
         <p class="pull-left">&copy; Telecomunicaciones Movilnet <?= date('Y') ?></p>
+
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </li>
         <!-- <p class="pull-left">&copy; My Company <?= date('Y') ?></p> -->
 
         <p class="pull-right">Debug</p>

@@ -117,14 +117,28 @@ a.desc:after {
 
 
 nav.navbar {
-    background: #ff6d2a;
+    background: #32bec9;
+    /* background: #29a2ac; */
     border: none;
 }
 
-nav.navbar a.navbar-brand{
-    color:#ffff;
+
+nav.navbar a.navbar-brand, .logout{
+    color: #ffff !important;
 }
 
-nav.navbar div ul li a:visited {
-    color: #ffff;
+nav.navbar div ul li a:visited , .logout{
+    color: #ffff !important;
+}
+
+a.navbar-brand{
+    padding: 6px;
+}
+
+.active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > li > a:hover , .logout:hover{
+    background: #7f34b0 !important;
+    /* background: #4e1f6d !important; */
+}
+.active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background: #7f34b0 !important;
 }
