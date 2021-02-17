@@ -162,7 +162,7 @@ class AccessController
 
         foreach ($this->sites as $site) {
             // var_dump($this->sites);
-            // // echo $currentURL;
+            // echo $currentURL;
             // exit;
             if ( $site['site'] == $currentURL ){
                 foreach ($site['role'] as $siteRole) {

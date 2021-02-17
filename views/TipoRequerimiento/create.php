@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\TipoRequerimiento */
 
-$this->title = 'Create Tipo Requerimiento';
+$this->title = 'Crear Tipo Requerimiento';
 $this->params['breadcrumbs'][] = ['label' => 'Tipo Requerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

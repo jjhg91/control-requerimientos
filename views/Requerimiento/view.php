@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Requerimiento */
 
-$this->title = $model->id_requerimiento;
+$this->title = 'N° - '.$model->id_requerimiento;
 $this->params['breadcrumbs'][] = ['label' => 'Requerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -43,7 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'datos',
             'fecha_requerida',
             // 'fecha_registro',
-            'p00_solicitante',
+            [
+                'label' => 'SOLICITANTE',
+                'value' => 'P00-'.$model->p00_solicitante
+            ],
+            
             'id_frecuencia',
             'id_tipo_requerimiento',
         ],

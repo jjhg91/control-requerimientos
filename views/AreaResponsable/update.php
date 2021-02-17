@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\AreaResponsable */
 
-$this->title = 'Update Area Responsable: ' . $model->id_area_responsable;
+$this->title = 'Actualizar Area Responsable: ' . $model->id_area_responsable;
 $this->params['breadcrumbs'][] = ['label' => 'Area Responsables', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_area_responsable, 'url' => ['view', 'id' => $model->id_area_responsable]];
 $this->params['breadcrumbs'][] = 'Update';

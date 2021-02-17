@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\EstatusRequerimiento */
 
-$this->title = 'Update Estatus Requerimiento: ' . $model->id_estatus_requerimiento;
+$this->title = 'Actualizar Estatus Requerimiento: ' . $model->id_estatus_requerimiento;
 $this->params['breadcrumbs'][] = ['label' => 'Estatus Requerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_estatus_requerimiento, 'url' => ['view', 'id' => $model->id_estatus_requerimiento]];
 $this->params['breadcrumbs'][] = 'Update';

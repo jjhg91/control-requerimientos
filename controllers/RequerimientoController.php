@@ -103,7 +103,6 @@ class RequerimientoController extends Controller
         $frecuencia = Frecuencia::find()->all();
         $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
         $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }

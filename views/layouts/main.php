@@ -10,6 +10,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+use app\models\PerfilUsuarioUsuario;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -36,15 +38,27 @@ AppAsset::register($this);
         ],
     ]);
 
-    function algo($label, $url)
+    function algo($label, $url, $perfiles)
     {
         if(  !Yii::$app->user->isGuest ){
             
-            // if (condition) {
-            // }
+            $listas = PerfilUsuarioUsuario::findAll(['p00'=>Yii::$app->user->identity->p00, 'estatus_perfil' => true]);
+            $pass = false;
+            
+            foreach ($perfiles as $perfil) {
+                foreach ($listas as $lista) {
+                    if ($perfil == $lista->id_perfil_usuario ) {
+                       $pass = true;
+                       break;
+                   }
+               }
+           }
 
-            return ['label' => $label, 'url' => [$url]];
-            #return true; 
+           
+           if ($pass === true) {
+               return ['label' => $label, 'url' => [$url]];
+           }
+
 
         }
         return '';
@@ -67,27 +81,27 @@ AppAsset::register($this);
             // ['label' => 'Perfil Usuario', 'url' => ['/perfilusuario/index']],
             // ['label' => 'Perfil Usuario Usuario', 'url' => ['/perfilusuariousuario/index']],
             
-            algo('Inicio', '/site/index'),
-            algo('Usuario', '/usuario/index'),
-            algo('Cargo', '/cargo/index'),
-            algo('Departamento', '/departamento/index'),
-            algo('Area Responsable', '/arearesponsable/index'),
-            algo('Estatus Usuario', '/estatususuario/index'),
-            algo('Tipo de Requerimiento', '/tiporequerimiento/index'),
-            algo('Estatus de Requerimiento', '/estatusrequerimiento/index'),
-            algo('Frecuencia', '/frecuencia/index'),
-            algo('Requerimiento', '/requerimiento/index'),
-            algo('Perfil Usuario', '/perfilusuario/index'),
-            algo('Perfil Usuario Usuario','/perfilusuariousuario/index'),
+            algo('Inicio', '/site/index',['1','2','3','4','5','6','7','8'] ),
+            algo('Usuario', '/usuario/index',['8','']),
+            algo('Cargo', '/cargo/index',['8']),
+            algo('Departamento', '/departamento/index',['8']),
+            algo('Area Responsable', '/arearesponsable/index',['8']),
+            algo('Estatus Usuario', '/estatususuario/index',['8']),
+            algo('Tipo de Requerimiento', '/tiporequerimiento/index',['8']),
+            algo('Estatus de Requerimiento', '/estatusrequerimiento/index',['8']),
+            algo('Frecuencia', '/frecuencia/index',['8']),
+            algo('Requerimiento', '/requerimiento/index',['8','4','2','3','4','6','7']),
+            algo('Perfil Usuario', '/perfilusuario/index',['8']),
+            algo('Perfil Usuario Usuario','/perfilusuariousuario/index',['8']),
             
 
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
-                '<li>'
+                '<li class="navbar-right">'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Cerrar Sesion (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -113,16 +127,6 @@ AppAsset::register($this);
 
         <p class="pull-left">&copy; Telecomunicaciones Movilnet <?= date('Y') ?></p>
 
-        <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </li>
         <!-- <p class="pull-left">&copy; My Company <?= date('Y') ?></p> -->
 
         <p class="pull-right">Debug</p>

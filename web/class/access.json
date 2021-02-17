@@ -46,7 +46,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "usuario%2Fupdate",
+            "site" : "usuario%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -71,7 +71,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "cargo%2Fupdate",
+            "site" : "cargo%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -96,7 +96,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "departamento%2Fupdate",
+            "site" : "departamento%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -121,7 +121,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "arearesponsable%2Fupdate",
+            "site" : "arearesponsable%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -146,7 +146,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "estatususuario%2Fupdate",
+            "site" : "estatususuario%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -171,7 +171,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "tiporequerimiento%2Fupdate",
+            "site" : "tiporequerimiento%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -196,7 +196,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "estatusrequerimiento%2Fupdate",
+            "site" : "estatusrequerimiento%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -221,7 +221,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "frecuencia%2Fupdate",
+            "site" : "frecuencia%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -246,7 +246,7 @@
             "role" : ["8","1"] 
         },
         {
-            "site" : "requerimiento%2Fupdate",
+            "site" : "requerimiento%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -271,7 +271,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "perfilusuario%2Fupdate",
+            "site" : "perfilusuario%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },
@@ -296,7 +296,7 @@
             "role" : ["8",""] 
         },
         {
-            "site" : "perfilusuariousuario%2Fupdate",
+            "site" : "perfilusuariousuario%2Fupdate&id",
             "access" : "private",
             "role" : ["8",""] 
         },

@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Requerimiento', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Requerimiento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_requerimiento',
             'fecha_solicitud',
             'objetivo',
-            'descripcion',
+           // 'descripcion',
             'datos',
             //'fecha_requerida',
             //'fecha_registro',
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => ('{update}')
+                'template' => ('{view}{update}{delete}')
                 
             ],
         ],
@@ -65,3 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+
+

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PerfilUsuario */
 
-$this->title = 'Create Perfil Usuario';
+$this->title = 'Crear Perfil Usuario';
 $this->params['breadcrumbs'][] = ['label' => 'Perfil Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

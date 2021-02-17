@@ -142,3 +142,12 @@ a.navbar-brand{
 .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     background: #7f34b0 !important;
 }
+
+
+/* button.btn.btn-link.logout{
+    background: #ec4646 !important;
+}
+
+button.btn.btn-link.logout:hover{
+    background: #c13535 !important;
+} */
