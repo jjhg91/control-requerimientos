@@ -3,11 +3,17 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+use app\models\EstatusRequerimientoRequerimiento;
+use app\models\EstatusRequerimiento;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RequerimientoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Requerimientos';
+
+
+
+$this->title = 'REQUERIMIENTOS';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="requerimiento-index">
@@ -29,21 +35,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_requerimiento',
             'fecha_solicitud',
             'objetivo',
-           // 'descripcion',
-            'datos',
+            //'descripcion',
+            //'datos',
             //'fecha_requerida',
             //'fecha_registro',
-            //'p00_solicitante',
-            //'id_frecuencia',
-            //'id_tipo_requerimiento',
+            'p00_solicitante',
             [
-                'label' => 'HOLA',
-                'content' => function($model,$key,$index,$column){
-                    $aa = '
+                'label' => 'ESTATUS',
+                'content' => function($model){
+                    $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $model->id_requerimiento])->orderBy(['fecha_estatus_requerimiento' => SORT_DESC])->all();
+                    $estatusReq = $estatusR[0]->id_estatus_requerimiento;
+                    $estatus = EstatusRequerimiento::find()->where(['id_estatus_requerimiento' => $estatusReq])->one();
+                    
+                    
+                    $boton = '
                         <a 
-                        href="/basic/web/index.php?r=requerimiento%2Fupdate&amp;id=10" 
-                        title="Update" 
-                        aria-label="Update" 
+                        href="/basic/web/index.php?r=requerimiento%2Festatus&amp;id='.$model->id_requerimiento.'" 
+                        title="Actualizar Estatus" 
+                        aria-label="Actualizar Estatus" 
                         data-pjax="0">
                     
                             <span 
@@ -51,10 +60,30 @@ $this->params['breadcrumbs'][] = $this->title;
                                 glyphicon-pencil">
                             </span>
                         </a>';
-
-                    return $aa;
-                }
+                    return  $estatus->descripcion . $boton;
+                    }
             ],
+            //'id_frecuencia',
+            //'id_tipo_requerimiento',
+            // [
+            //     'label' => 'HOLA',
+            //     'content' => function($model,$key,$index,$column){
+            //         $aa = '
+            //             <a 
+            //             href="/basic/web/index.php?r=requerimiento%2Fupdate&amp;id='.$model->id_requerimiento.'" 
+            //             title="Update" 
+            //             aria-label="Update" 
+            //             data-pjax="0">
+                    
+            //                 <span 
+            //                     class="glyphicon 
+            //                     glyphicon-pencil">
+            //                 </span>
+            //             </a>';
+
+            //         return $aa;
+            //     }
+            // ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => ('{view}{update}{delete}')

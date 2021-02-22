@@ -205,6 +205,33 @@
             "access" : "private",
             "role" : ["8",""] 
         },
+
+        {
+            "site" : "estatusrequerimientorequerimiento%2Findex",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimientorequerimiento%2Fcreate",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimientorequerimiento%2Fview",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimientorequerimiento%2Fupdate&id",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+        {
+            "site" : "estatusrequerimientorequerimiento%2Fdelete",
+            "access" : "private",
+            "role" : ["8",""] 
+        },
+
         {
             "site" : "frecuencia%2Findex",
             "access" : "private",

@@ -3,10 +3,15 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+use app\models\Usuario;
+
+use app\models\EstatusRequerimientoRequerimiento;
+use app\models\EstatusRequerimiento;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Requerimiento */
 
-$this->title = 'N° - '.$model->id_requerimiento;
+$this->title = 'REQUERIMIENTO N° - '.$model->id_requerimiento;
 $this->params['breadcrumbs'][] = ['label' => 'Requerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -17,6 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Actualizar', ['update', 'id' => $model->id_requerimiento], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Actualizar Estatus', ['estatus', 'id' => $model->id_requerimiento], ['class' => 'btn btn-primary']) ?>
+        
         <?= Html::a('Eliminar', ['delete', 'id' => $model->id_requerimiento], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -38,6 +45,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id_requerimiento',
             'fecha_solicitud',
+            [
+                'label' => 'ESTATUS',
+                'value' => function ($model)
+                    {
+                        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $model->id_requerimiento])->orderBy(['fecha_estatus_requerimiento' => SORT_DESC])->all();
+                        $estatusReq = $estatusR[0]->id_estatus_requerimiento;
+                        $estatus = EstatusRequerimiento::find()->where(['id_estatus_requerimiento' => $estatusReq])->one();
+                        return $estatus->descripcion;
+                    }
+            ],
             'objetivo',
             'descripcion',
             'datos',
@@ -45,7 +62,12 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'fecha_registro',
             [
                 'label' => 'SOLICITANTE',
-                'value' => 'P00-'.$model->p00_solicitante
+                'value' => function($model){
+                    $solicitante = Usuario::findOne($model->p00_solicitante);
+                    $respuesta = 'P00-'.$model->p00_solicitante.' | '.$solicitante->nombres.' '.$solicitante->apellidos;
+
+                    return $respuesta;
+                }
             ],
             
             'id_frecuencia',

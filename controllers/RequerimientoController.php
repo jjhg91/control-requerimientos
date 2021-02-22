@@ -12,6 +12,9 @@ use yii\filters\VerbFilter;
 use app\models\TipoRequerimiento;
 use app\models\Frecuencia;
 
+use app\models\EstatusRequerimientoRequerimiento;
+use app\models\EstatusRequerimiento;
+
 use yii\helpers\ArrayHelper;
 
 /**
@@ -77,7 +80,14 @@ class RequerimientoController extends Controller
         $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
- 
+            
+            $modelEstatus = new EstatusRequerimientoRequerimiento();
+
+            $modelEstatus->id_requerimiento = $model->id_requerimiento;
+            $modelEstatus->id_estatus_requerimiento = 1;
+            $modelEstatus->fecha_estatus_requerimiento = $model->fecha_solicitud;
+            $modelEstatus->save();
+            
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }
 
@@ -117,12 +127,13 @@ class RequerimientoController extends Controller
 
     public function actionEstatus($id)
     {
-        $model = $this->findModel($id);
 
-        $tipoRequerimiento = TipoRequerimiento::find()->all();
-        $frecuencia = Frecuencia::find()->all();
-        $listaTipoRequerimiento = ArrayHelper::map($tipoRequerimiento, 'id_tipo_requerimiento','descripcion');
-        $listaFrecuencia = ArrayHelper::map($frecuencia, 'id_frecuencia','descripcion');
+        $model = new EstatusRequerimientoRequerimiento();
+        $modelR = $this->findModel($id);
+
+        $tipoEstatusR = EstatusRequerimiento::find()->all();
+        $listaEstatusR = ArrayHelper::map($tipoEstatusR, 'id_estatus_requerimiento','descripcion');
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
@@ -130,8 +141,8 @@ class RequerimientoController extends Controller
 
         return $this->render('estatus', [
             'model' => $model,
-            'listaTipoRequerimiento' => $listaTipoRequerimiento,
-            'listaFrecuencia' => $listaFrecuencia
+            'modelR' => $modelR,
+            'listaEstatusR' => $listaEstatusR
         ]);
     }
 

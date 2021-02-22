@@ -89,6 +89,7 @@ AppAsset::register($this);
             algo('Estatus Usuario', '/estatususuario/index',['8']),
             algo('Tipo de Requerimiento', '/tiporequerimiento/index',['8']),
             algo('Estatus de Requerimiento', '/estatusrequerimiento/index',['8']),
+            algo('Estatus Requerimiento Requerimiento','/estatusrequerimientorequerimiento/index',['8']),
             algo('Frecuencia', '/frecuencia/index',['8']),
             algo('Requerimiento', '/requerimiento/index',['8','4','2','3','4','6','7']),
             algo('Perfil Usuario', '/perfilusuario/index',['8']),
@@ -118,7 +119,9 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+
         <?= $content ?>
+
     </div>
 </div>
 
@@ -129,7 +132,8 @@ AppAsset::register($this);
 
         <!-- <p class="pull-left">&copy; My Company <?= date('Y') ?></p> -->
 
-        <p class="pull-right">Debug</p>
+        <p class="pull-right">- version-beta: 1.0</p>
+        <p class="pull-right">realizado por GGCSTI -</p>
     </div>
 </footer>
 

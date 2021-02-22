@@ -42,7 +42,6 @@ use yii\widgets\ActiveForm;
     <div class="form-group field-requerimiento-fecha_requerida required">
         <label class="control-label" for="requerimiento-fecha_requerida">FECHA REQUERIDA</label>
         <input type="date" id="requerimiento-fecha_requerida" class="form-control" name="Requerimiento[fecha_requerida]" aria-required="true">
-        <input type="time" id="requerimiento-fecha_requerida-time" class="form-control" name="Requerimiento[fecha_requerida-time]" aria-required="true">
         <div class="help-block"></div>
     </div>
 
@@ -56,6 +55,11 @@ use yii\widgets\ActiveForm;
     ?>
     <?= $form->field($model, 'fecha_registro')->hiddenInput()->label(false) ?>
 
+
+    <?php 
+        $p00 = Yii::$app->user->identity->p00;
+        $model->p00_solicitante = $p00;
+    ?>
     <?= $form->field($model, 'p00_solicitante')->textInput() ?>
 
     <?= 

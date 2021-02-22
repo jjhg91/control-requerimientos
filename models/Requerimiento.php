@@ -62,8 +62,8 @@ class Requerimiento extends \yii\db\ActiveRecord
             'descripcion' => 'DESCRIPCION DEL REQUERIMIENTO',
             'datos' => 'DATOS REQUERIDOS',
             'fecha_requerida' => 'FECHA REQUERIDA',
-            'fecha_registro' => 'Fecha Registro',
-            'p00_solicitante' => 'P00 Solicitante',
+            'fecha_registro' => 'FECHA REGISTRO',
+            'p00_solicitante' => 'SOLICITANTE',
             'id_frecuencia' => 'FRECUENCIA',
             'id_tipo_requerimiento' => 'TIPO DE REQUERIMIENTO',
         ];

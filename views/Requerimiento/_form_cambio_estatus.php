@@ -3,46 +3,44 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+use app\models\EstatusRequerimientoRequerimiento;
+
+
 /* @var $this yii\web\View */
-/* @var $model app\models\Requerimiento */
+/* @var $model app\models\EstatusRequerimientoRequerimiento */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="requerimiento-form">
+<div class="estatus-requerimiento-requerimiento-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_solicitud')->textInput() ?>
+    <?php $model->id_requerimiento = $modelR->id_requerimiento ?>
 
+    <?= $form->field($model, 'id_requerimiento')->textInput()->hiddenInput()->label(false) ?>
+
+    <!-- <?#= $form->field($model, 'id_estatus_requerimiento')->textInput() ?> -->
+    <?php
+        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $modelR->id_requerimiento])->orderBy(['fecha_estatus_requerimiento' => SORT_DESC])->all();
+        $estatusReq = $estatusR[0]->id_estatus_requerimiento; 
+        $model->id_estatus_requerimiento = $estatusReq;
+    ?>
 
     <?= 
-        $form->field($model, 'id_tipo_requerimiento')->dropdownList([
-            $listaTipoRequerimiento
+        $form->field($model, 'id_estatus_requerimiento')->dropdownList([
+            $listaEstatusR
         ],
-        ['prompt'=>'SELECCIONAR TIPO DE REQUERIMIENTO...']
+        ['prompt'=>'SELECCIONAR ESTATUS...']
     );
     ?>
 
-    <?= $form->field($model, 'objetivo')->textarea(['rows' => '4']) ?>
 
-    <?= $form->field($model, 'descripcion')->textarea(['rows' => '8']) ?>
-
-    <?= $form->field($model, 'datos')->textarea(['rows' => '4']) ?>
-
-    <?= $form->field($model, 'fecha_requerida')->textInput() ?>
-
-    <!-- <?= $form->field($model, 'fecha_registro')->textInput() ?> -->
-
-    <?= $form->field($model, 'p00_solicitante')->textInput() ?>
-
-    <?= 
-        $form->field($model, 'id_frecuencia')->dropdownList([
-            $listaFrecuencia
-        ],
-        ['prompt'=>'SELECCIONAR FRECUANCIA...']
-    );
+    <?php 
+        $fecha = date('d-m-Y H:i:s');
+        $model->fecha_estatus_requerimiento = $fecha;
     ?>
 
+    <?= $form->field($model, 'fecha_estatus_requerimiento')->textInput()->hiddenInput()->label(false) ?>
     
 
     <div class="form-group">
