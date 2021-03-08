@@ -21,7 +21,7 @@ use app\models\EstatusRequerimientoRequerimiento;
 
     <!-- <?#= $form->field($model, 'id_estatus_requerimiento')->textInput() ?> -->
     <?php
-        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $modelR->id_requerimiento])->orderBy(['fecha_estatus_requerimiento' => SORT_DESC])->all();
+        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $modelR->id_requerimiento])->orderBy(['id_estatus_requerimeinto__requerimiento' => SORT_DESC])->all();
         $estatusReq = $estatusR[0]->id_estatus_requerimiento; 
         $model->id_estatus_requerimiento = $estatusReq;
     ?>

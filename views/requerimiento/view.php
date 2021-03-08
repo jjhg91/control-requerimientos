@@ -49,9 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'ESTATUS',
                 'value' => function ($model)
                     {
-                        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $model->id_requerimiento])->orderBy(['fecha_estatus_requerimiento' => SORT_DESC])->all();
+                        $estatusR = EstatusRequerimientoRequerimiento::find()->where(['id_requerimiento' => $model->id_requerimiento])->orderBy(['id_estatus_requerimeinto__requerimiento' => SORT_DESC])->all();
                         $estatusReq = $estatusR[0]->id_estatus_requerimiento;
                         $estatus = EstatusRequerimiento::find()->where(['id_estatus_requerimiento' => $estatusReq])->one();
+                        // var_dump($estatusR);
+                        // exit;
                         return $estatus->descripcion;
                     }
             ],

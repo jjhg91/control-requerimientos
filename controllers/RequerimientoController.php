@@ -136,6 +136,8 @@ class RequerimientoController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // var_dump($model);
+            // exit;
             return $this->redirect(['view', 'id' => $model->id_requerimiento]);
         }
 
